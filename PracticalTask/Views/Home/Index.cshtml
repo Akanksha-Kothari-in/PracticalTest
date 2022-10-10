@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div style="margin-top: 40px;">
+    <a href="@Url.Action("Create","Home")" class="btn btn-primary" style="justify-content: right;">Add Product</a>
+</div>
+
+<table class="table table-bordered table-striped" style="margin-top: 10px;">
+    <tr>
+        <td>Id</td>
+        <th>Customer name</th>
+        <th>Product Name</th>
+        <th>Remarks</th>
+        <th></th>
+    </tr>
+
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>
+                <a href="@Url.Action("Edit", "Home", new {@id=@Model.Rows[i][0] })">Edit</a>
+                <a href="@Url.Action("Delete", "Home", new {@id=@Model.Rows[i][0] })">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
